@@ -1,0 +1,58 @@
+sudo apt update
+sudo apt upgrade -y
+sudo apt install -y \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
+sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo \
+  "deb [arch=$(dpkg --print-architecture) \
+  signed-by=/etc/apt/keyrings/docker.gpg] \
+  https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+docker --version
+sudo usermod -aG docker $USER
+sudo apt install nginx -y
+
+--install github runner here----
+
+
+
+
+
+to make runner as service
+cd actions-runner
+sudo ./svc.sh install
+sudo ./svc.sh start
+
+
+
+
+
+
+after done
+
+docker inspect -f \
+'{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' \ (containerId--comes-here)
+
+
+/etc/nginx/sites-available/default
+
+ server_name _;
+
+        location / {
+                proxy_pass http:// 172.17.0.2:8080;
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                try_files $uri $uri/ =404;
+        }
+
+
+
+
