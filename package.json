@@ -1,0 +1,12 @@
+{
+  "name": "node-docker-demo",
+  "version": "1.0.0",
+  "description": "demo for node+ docker to ec2 from git actions",
+  "main": "index.js",
+  "scripts": {
+     "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
